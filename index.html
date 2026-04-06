@@ -1,0 +1,1207 @@
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet"/>
+<style>
+  /* Webador: scope styles to hutch wrapper */
+  :root {
+    --yellow: #FFD000;
+    --yellow-hot: #FFE840;
+    --yellow-deep: #B8960A;
+    --black: #0A0A0A;
+    --black-mid: #111111;
+    --black-card: #161616;
+    --black-border: #242424;
+    --white: #F2F0EA;
+    --gray: #777;
+    --gray-light: #AAA;
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-condensed: 'Barlow Condensed', sans-serif;
+    --font-body: 'Barlow', sans-serif;
+  }
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+background: var(–black);
+color: var(–white);
+font-family: var(–font-body);
+overflow-x: hidden;
+}
+
+/* NOISE TEXTURE */
+body::after {
+content: ‘’;
+position: fixed;
+inset: 0;
+background-image: url(“data:image/svg+xml,%3Csvg viewBox=‘0 0 256 256’ xmlns=‘http://www.w3.org/2000/svg’%3E%3Cfilter id=‘noise’%3E%3CfeTurbulence type=‘fractalNoise’ baseFrequency=‘0.9’ numOctaves=‘4’ stitchTiles=‘stitch’/%3E%3C/filter%3E%3Crect width=‘100%25’ height=‘100%25’ filter=‘url(%23noise)’ opacity=‘1’/%3E%3C/svg%3E”);
+opacity: 0.03;
+pointer-events: none;
+z-index: 9999;
+}
+
+/* ── NAV ── */
+nav {
+position: fixed;
+top: 0; left: 0; right: 0;
+z-index: 500;
+height: 70px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 0 4rem;
+background: rgba(10,10,10,0.95);
+backdrop-filter: blur(12px);
+border-bottom: 1px solid var(–black-border);
+}
+
+.nav-logo {
+font-family: var(–font-display);
+font-size: 2rem;
+letter-spacing: 0.05em;
+color: var(–yellow);
+text-decoration: none;
+}
+.nav-logo span { color: var(–white); }
+
+.nav-links {
+list-style: none;
+display: flex;
+gap: 2.5rem;
+align-items: center;
+}
+.nav-links a {
+font-family: var(–font-condensed);
+font-size: 0.9rem;
+font-weight: 700;
+letter-spacing: 0.15em;
+text-transform: uppercase;
+color: var(–gray);
+text-decoration: none;
+transition: color 0.2s;
+}
+.nav-links a:hover { color: var(–yellow); }
+
+.nav-cta {
+background: var(–yellow) !important;
+color: var(–black) !important;
+padding: 0.45rem 1.4rem !important;
+clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+}
+.nav-cta:hover { background: var(–yellow-hot) !important; }
+
+/* ── HERO ── */
+#hero {
+min-height: 100vh;
+display: flex;
+align-items: center;
+position: relative;
+padding: 120px 4rem 80px;
+overflow: hidden;
+}
+
+.hero-bg {
+position: absolute;
+inset: 0;
+background:
+radial-gradient(ellipse 65% 70% at 85% 40%, rgba(255,208,0,0.11) 0%, transparent 65%),
+radial-gradient(ellipse 50% 40% at 10% 90%, rgba(255,208,0,0.05) 0%, transparent 60%),
+linear-gradient(150deg, #0A0A0A 0%, #0F0F00 60%, #0A0A0A 100%);
+}
+
+.hero-grid {
+position: absolute;
+inset: 0;
+background-image:
+linear-gradient(rgba(255,208,0,0.035) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,208,0,0.035) 1px, transparent 1px);
+background-size: 64px 64px;
+mask-image: radial-gradient(ellipse 90% 90% at 50% 50%, black 30%, transparent 80%);
+}
+
+.hero-stripe {
+position: absolute;
+top: 0; bottom: 0;
+right: 0;
+width: 6px;
+background: linear-gradient(180deg, transparent, var(–yellow), var(–yellow-deep), transparent);
+opacity: 0.6;
+}
+
+.hero-content {
+position: relative;
+z-index: 2;
+max-width: 860px;
+}
+
+.eyebrow {
+font-family: var(–font-condensed);
+font-size: 0.82rem;
+font-weight: 700;
+letter-spacing: 0.28em;
+text-transform: uppercase;
+color: var(–yellow);
+margin-bottom: 1.5rem;
+display: flex;
+align-items: center;
+gap: 0.8rem;
+animation: fadeUp 0.7s ease both;
+}
+.eyebrow::before {
+content: ‘’;
+width: 36px; height: 2px;
+background: var(–yellow);
+flex-shrink: 0;
+}
+
+.hero-title {
+font-family: var(–font-display);
+font-size: clamp(3.8rem, 9.5vw, 8.5rem);
+line-height: 0.88;
+letter-spacing: 0.02em;
+margin-bottom: 1.8rem;
+animation: fadeUp 0.7s 0.08s ease both;
+}
+.hero-title .y { color: var(–yellow); }
+.hero-title .dim { color: var(–yellow-deep); }
+
+.hero-desc {
+font-size: 1.1rem;
+font-weight: 500;
+color: var(–gray-light);
+line-height: 1.7;
+max-width: 520px;
+margin-bottom: 2.8rem;
+animation: fadeUp 0.7s 0.16s ease both;
+}
+
+.hero-actions {
+display: flex;
+gap: 1.2rem;
+flex-wrap: wrap;
+animation: fadeUp 0.7s 0.24s ease both;
+}
+
+.btn-primary {
+display: inline-flex;
+align-items: center;
+gap: 0.6rem;
+background: var(–yellow);
+color: var(–black);
+font-family: var(–font-condensed);
+font-size: 1rem;
+font-weight: 800;
+letter-spacing: 0.12em;
+text-transform: uppercase;
+padding: 1rem 2.2rem;
+text-decoration: none;
+clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
+transition: background 0.2s, transform 0.15s;
+}
+.btn-primary:hover { background: var(–yellow-hot); transform: translateY(-2px); }
+
+.btn-secondary {
+display: inline-flex;
+align-items: center;
+gap: 0.6rem;
+background: transparent;
+color: var(–white);
+font-family: var(–font-condensed);
+font-size: 1rem;
+font-weight: 700;
+letter-spacing: 0.12em;
+text-transform: uppercase;
+padding: 1rem 2.2rem;
+text-decoration: none;
+border: 1px solid var(–black-border);
+clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
+transition: border-color 0.2s, color 0.2s;
+}
+.btn-secondary:hover { border-color: var(–yellow); color: var(–yellow); }
+
+.hero-badges {
+position: absolute;
+bottom: 3rem;
+right: 4rem;
+display: flex;
+flex-direction: column;
+gap: 1rem;
+z-index: 2;
+animation: fadeUp 0.7s 0.3s ease both;
+}
+
+.badge {
+display: flex;
+align-items: center;
+gap: 0.7rem;
+font-family: var(–font-condensed);
+font-size: 0.8rem;
+font-weight: 700;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+color: var(–gray);
+}
+.badge-dot {
+width: 8px; height: 8px;
+background: var(–yellow);
+clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+flex-shrink: 0;
+}
+
+/* ── SECTIONS SHARED ── */
+section { padding: 6rem 4rem; }
+
+.section-label {
+font-family: var(–font-condensed);
+font-size: 0.78rem;
+font-weight: 700;
+letter-spacing: 0.28em;
+text-transform: uppercase;
+color: var(–yellow);
+margin-bottom: 1rem;
+display: flex;
+align-items: center;
+gap: 0.7rem;
+}
+.section-label::before {
+content: ‘’;
+width: 28px; height: 2px;
+background: var(–yellow);
+}
+
+.section-title {
+font-family: var(–font-display);
+font-size: clamp(2.5rem, 5vw, 4rem);
+line-height: 1;
+letter-spacing: 0.02em;
+margin-bottom: 1rem;
+}
+.section-title .y { color: var(–yellow); }
+
+.section-sub {
+font-size: 1rem;
+color: var(–gray-light);
+line-height: 1.7;
+max-width: 540px;
+margin-bottom: 3.5rem;
+}
+
+/* ── DIVIDER ── */
+.divider {
+height: 1px;
+background: linear-gradient(90deg, transparent, var(–black-border) 20%, var(–yellow-deep) 50%, var(–black-border) 80%, transparent);
+margin: 0 4rem;
+}
+
+/* ── STATS BAR ── */
+#stats {
+padding: 3rem 4rem;
+background: var(–black-mid);
+border-top: 1px solid var(–black-border);
+border-bottom: 1px solid var(–black-border);
+}
+
+.stats-grid {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 2rem;
+text-align: center;
+}
+
+.stat-item {}
+.stat-num {
+font-family: var(–font-display);
+font-size: 3rem;
+color: var(–yellow);
+letter-spacing: 0.04em;
+line-height: 1;
+}
+.stat-label {
+font-family: var(–font-condensed);
+font-size: 0.8rem;
+font-weight: 700;
+letter-spacing: 0.15em;
+text-transform: uppercase;
+color: var(–gray);
+margin-top: 0.4rem;
+}
+
+/* ── SERVICES ── */
+#services { background: var(–black); }
+
+.services-header {
+display: flex;
+justify-content: space-between;
+align-items: flex-end;
+margin-bottom: 3rem;
+flex-wrap: wrap;
+gap: 2rem;
+}
+
+.services-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+gap: 1.5px;
+background: var(–black-border);
+border: 1.5px solid var(–black-border);
+}
+
+.service-card {
+background: var(–black-card);
+padding: 2.2rem;
+position: relative;
+overflow: hidden;
+transition: background 0.25s;
+cursor: default;
+}
+.service-card::before {
+content: ‘’;
+position: absolute;
+top: 0; left: 0;
+width: 3px; height: 0;
+background: var(–yellow);
+transition: height 0.3s ease;
+}
+.service-card:hover { background: #1C1C00; }
+.service-card:hover::before { height: 100%; }
+
+.service-icon {
+font-size: 1.8rem;
+margin-bottom: 1rem;
+display: block;
+}
+.service-name {
+font-family: var(–font-condensed);
+font-size: 1.25rem;
+font-weight: 800;
+letter-spacing: 0.06em;
+text-transform: uppercase;
+color: var(–white);
+margin-bottom: 0.6rem;
+}
+.service-desc {
+font-size: 0.88rem;
+color: var(–gray);
+line-height: 1.6;
+}
+.service-num {
+position: absolute;
+top: 1.5rem; right: 1.8rem;
+font-family: var(–font-display);
+font-size: 3.5rem;
+color: rgba(255,208,0,0.05);
+line-height: 1;
+pointer-events: none;
+}
+
+/* ── WHY ── */
+#why {
+background: var(–black-mid);
+border-top: 1px solid var(–black-border);
+border-bottom: 1px solid var(–black-border);
+}
+
+.why-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 5rem;
+align-items: center;
+}
+
+.why-list {
+list-style: none;
+display: flex;
+flex-direction: column;
+gap: 1.8rem;
+margin-top: 2rem;
+}
+
+.why-item {
+display: flex;
+gap: 1.2rem;
+align-items: flex-start;
+}
+
+.why-icon {
+width: 42px; height: 42px;
+background: rgba(255,208,0,0.08);
+border: 1px solid rgba(255,208,0,0.2);
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 1.1rem;
+flex-shrink: 0;
+clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+}
+
+.why-text h4 {
+font-family: var(–font-condensed);
+font-size: 1rem;
+font-weight: 800;
+letter-spacing: 0.08em;
+text-transform: uppercase;
+color: var(–white);
+margin-bottom: 0.25rem;
+}
+.why-text p {
+font-size: 0.88rem;
+color: var(–gray);
+line-height: 1.6;
+}
+
+.why-visual {
+position: relative;
+}
+
+.why-box {
+background: var(–black-card);
+border: 1px solid var(–black-border);
+padding: 3rem;
+position: relative;
+}
+.why-box::before {
+content: ‘’;
+position: absolute;
+top: -1px; left: 2rem; right: 2rem;
+height: 3px;
+background: linear-gradient(90deg, transparent, var(–yellow), transparent);
+}
+
+.why-quote {
+font-family: var(–font-display);
+font-size: 2.2rem;
+line-height: 1.1;
+color: var(–white);
+margin-bottom: 1.5rem;
+}
+.why-quote .y { color: var(–yellow); }
+
+.why-detail {
+font-size: 0.9rem;
+color: var(–gray-light);
+line-height: 1.7;
+margin-bottom: 2rem;
+}
+
+.why-service-area {
+padding: 1.2rem;
+background: rgba(255,208,0,0.05);
+border: 1px solid rgba(255,208,0,0.15);
+}
+.why-service-area h5 {
+font-family: var(–font-condensed);
+font-size: 0.78rem;
+font-weight: 700;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+color: var(–yellow);
+margin-bottom: 0.5rem;
+}
+.why-service-area p {
+font-size: 0.88rem;
+color: var(–gray-light);
+line-height: 1.6;
+}
+
+/* ── PROCESS ── */
+#process { background: var(–black); }
+
+.process-steps {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 0;
+margin-top: 1rem;
+position: relative;
+}
+.process-steps::before {
+content: ‘’;
+position: absolute;
+top: 2rem;
+left: 12.5%;
+right: 12.5%;
+height: 1px;
+background: linear-gradient(90deg, var(–yellow), var(–yellow-deep), var(–yellow));
+opacity: 0.3;
+}
+
+.process-step {
+padding: 2.5rem 2rem;
+text-align: center;
+position: relative;
+}
+
+.step-num {
+width: 4rem; height: 4rem;
+background: var(–yellow);
+color: var(–black);
+font-family: var(–font-display);
+font-size: 1.6rem;
+display: flex;
+align-items: center;
+justify-content: center;
+margin: 0 auto 1.5rem;
+clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+position: relative;
+z-index: 1;
+}
+
+.step-title {
+font-family: var(–font-condensed);
+font-size: 1.1rem;
+font-weight: 800;
+letter-spacing: 0.08em;
+text-transform: uppercase;
+margin-bottom: 0.6rem;
+color: var(–white);
+}
+
+.step-desc {
+font-size: 0.85rem;
+color: var(–gray);
+line-height: 1.6;
+}
+
+/* ── CONTACT ── */
+#contact {
+background: var(–black-mid);
+border-top: 1px solid var(–black-border);
+position: relative;
+overflow: hidden;
+}
+
+#contact::before {
+content: ‘’;
+position: absolute;
+inset: 0;
+background: radial-gradient(ellipse 60% 60% at 50% 100%, rgba(255,208,0,0.07) 0%, transparent 70%);
+pointer-events: none;
+}
+
+.contact-inner {
+position: relative;
+z-index: 2;
+max-width: 860px;
+margin: 0 auto;
+text-align: center;
+}
+
+.contact-title {
+font-family: var(–font-display);
+font-size: clamp(3rem, 6vw, 5.5rem);
+line-height: 0.9;
+letter-spacing: 0.02em;
+margin-bottom: 1.5rem;
+}
+.contact-title .y { color: var(–yellow); }
+
+.contact-sub {
+font-size: 1rem;
+color: var(–gray-light);
+line-height: 1.7;
+max-width: 500px;
+margin: 0 auto 3rem;
+}
+
+.contact-options {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 1.5px;
+background: var(–black-border);
+border: 1.5px solid var(–black-border);
+margin-bottom: 3rem;
+text-align: left;
+}
+
+.contact-option {
+background: var(–black-card);
+padding: 2rem;
+text-decoration: none;
+color: inherit;
+transition: background 0.2s;
+display: block;
+}
+.contact-option:hover { background: #1A1A00; }
+
+.contact-option-icon {
+font-size: 1.5rem;
+margin-bottom: 0.8rem;
+}
+.contact-option-label {
+font-family: var(–font-condensed);
+font-size: 0.75rem;
+font-weight: 700;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+color: var(–yellow);
+margin-bottom: 0.3rem;
+}
+.contact-option-value {
+font-family: var(–font-condensed);
+font-size: 1.05rem;
+font-weight: 700;
+color: var(–white);
+}
+
+.contact-form {
+background: var(–black-card);
+border: 1px solid var(–black-border);
+padding: 2.5rem;
+text-align: left;
+}
+
+.form-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 1rem;
+margin-bottom: 1rem;
+}
+
+.form-group {
+display: flex;
+flex-direction: column;
+gap: 0.4rem;
+}
+.form-group.full { grid-column: 1 / -1; }
+
+label {
+font-family: var(–font-condensed);
+font-size: 0.75rem;
+font-weight: 700;
+letter-spacing: 0.18em;
+text-transform: uppercase;
+color: var(–gray);
+}
+
+input, textarea, select {
+background: var(–black);
+border: 1px solid var(–black-border);
+color: var(–white);
+font-family: var(–font-body);
+font-size: 0.95rem;
+padding: 0.85rem 1rem;
+width: 100%;
+outline: none;
+transition: border-color 0.2s;
+-webkit-appearance: none;
+}
+input:focus, textarea:focus, select:focus {
+border-color: var(–yellow);
+}
+textarea { min-height: 120px; resize: vertical; }
+select option { background: var(–black); }
+
+.form-submit {
+margin-top: 1.5rem;
+display: flex;
+justify-content: flex-end;
+}
+
+/* ── FOOTER ── */
+footer {
+background: var(–black);
+border-top: 1px solid var(–black-border);
+padding: 2.5rem 4rem;
+display: flex;
+justify-content: space-between;
+align-items: center;
+flex-wrap: wrap;
+gap: 1.5rem;
+}
+
+.footer-logo {
+font-family: var(–font-display);
+font-size: 1.6rem;
+color: var(–yellow);
+letter-spacing: 0.05em;
+}
+.footer-logo span { color: var(–white); }
+
+.footer-legal {
+font-size: 0.78rem;
+color: var(–gray);
+line-height: 1.6;
+text-align: center;
+}
+
+.footer-links {
+display: flex;
+gap: 1.5rem;
+list-style: none;
+}
+.footer-links a {
+font-family: var(–font-condensed);
+font-size: 0.8rem;
+font-weight: 700;
+letter-spacing: 0.12em;
+text-transform: uppercase;
+color: var(–gray);
+text-decoration: none;
+transition: color 0.2s;
+}
+.footer-links a:hover { color: var(–yellow); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+from { opacity: 0; transform: translateY(24px); }
+to   { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+opacity: 0;
+transform: translateY(30px);
+transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible {
+opacity: 1;
+transform: translateY(0);
+}
+
+/* ── MOBILE ── */
+@media (max-width: 900px) {
+nav { padding: 0 1.5rem; }
+.nav-links { display: none; }
+section { padding: 4rem 1.5rem; }
+#hero { padding: 100px 1.5rem 60px; }
+#stats { padding: 2.5rem 1.5rem; }
+.stats-grid { grid-template-columns: repeat(2, 1fr); }
+.why-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+.process-steps { grid-template-columns: repeat(2, 1fr); }
+.process-steps::before { display: none; }
+.contact-options { grid-template-columns: 1fr; }
+.form-grid { grid-template-columns: 1fr; }
+.hero-badges { display: none; }
+footer { padding: 2rem 1.5rem; flex-direction: column; text-align: center; }
+.footer-legal { order: 3; }
+.divider { margin: 0 1.5rem; }
+.services-header { flex-direction: column; align-items: flex-start; }
+}
+
+@media (max-width: 600px) {
+.hero-title { font-size: 3.2rem; }
+.process-steps { grid-template-columns: 1fr; }
+.contact-form { padding: 1.5rem; }
+}
+</style>
+
+<!-- NAV -->
+
+<nav>
+  <a href="#hero" class="nav-logo">HUTCH <span>& CO.</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-stripe"></div>
+
+  <div class="hero-content">
+    <div class="eyebrow">KC Metro's Go-To Handyman</div>
+    <h1 class="hero-title">
+      BUILT<br>
+      <span class="y">RIGHT.</span><br>
+      DONE<br>
+      <span class="dim">HONEST.</span>
+    </h1>
+    <p class="hero-desc">
+      Hutch &amp; Co. handles the repairs, installs, and upgrades your home needs — done with skill, on time, and without the runaround. Serving Kansas City and surrounding areas.
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Get a Free Quote →</a>
+      <a href="#services" class="btn-secondary">View Services</a>
+    </div>
+  </div>
+
+  <div class="hero-badges">
+    <div class="badge"><div class="badge-dot"></div> Licensed &amp; Insured</div>
+    <div class="badge"><div class="badge-dot"></div> KC Metro &amp; Surrounding Areas</div>
+    <div class="badge"><div class="badge-dot"></div> No Job Too Small</div>
+  </div>
+</section>
+
+<!-- STATS -->
+
+<div id="stats">
+  <div class="stats-grid">
+    <div class="stat-item reveal">
+      <div class="stat-num">KC+</div>
+      <div class="stat-label">Metro Service Area</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-num">20+</div>
+      <div class="stat-label">Service Categories</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Satisfaction Focus</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-num">0</div>
+      <div class="stat-label">Hidden Fees</div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+
+<section id="services">
+  <div class="services-header">
+    <div>
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title">OUR <span class="y">SERVICES</span></h2>
+      <p class="section-sub">From a loose hinge to a full room refresh — if it needs doing, we do it right.</p>
+    </div>
+    <a href="#contact" class="btn-primary">Request a Service →</a>
+  </div>
+
+  <div class="services-grid">
+
+```
+<div class="service-card reveal">
+  <span class="service-icon">🔨</span>
+  <span class="service-num">01</span>
+  <div class="service-name">General Repairs</div>
+  <p class="service-desc">Doors that stick, squeaky floors, broken fixtures, patching holes — the everyday fixes that pile up handled cleanly and quickly.</p>
+</div>
+
+<div class="service-card reveal">
+  <span class="service-icon">🖌️</span>
+  <span class="service-num">02</span>
+  <div class="service-name">Interior Painting</div>
+  <p class="service-desc">Walls, ceilings, trim, and accent features. Clean lines, no mess left behind, colors that actually look right when we're done.</p>
+</div>
+
+<div class="service-card reveal">
+  <span class="service-icon">🏠</span>
+  <span class="service-num">03</span>
+  <div class="service-name">Exterior Painting &amp; Touch-Ups</div>
+  <p class="service-desc">Siding, fascia, shutters, trim, and fences. Protect your home's exterior and keep it looking sharp year-round.</p>
+</div>
+
+<div class="service-card reveal">
+  <span class="service-icon">🚿</span>
+  <span class="service-num">04</span>
+  <div class="service-name">Bathroom Remodeling</div>
+  <p class="service-desc">Vanity installs, tile work, shower surrounds, fixture upgrades, and full bathroom refreshes — minus the contractor markup.</p>
+</div>
+
+<div class="service-card reveal">
+  <span class="service-icon">🍳</span>
+  <span class="service-num">05</span>
+  <div class="service-name">Kitchen Updates</div>
+  <p class="service-desc">Cabinet hardware, backsplash tile, fixture swaps, countertop installs, and minor kitchen layout improvements.</p>
+</div>
+
+<div class="service-card reveal">
+  <span class="service-icon">🪵</span>
+  <span class="service-num">06</span>
+  <div class="service-name">Flooring Installation</div>
+  <p class="service-desc">Laminate, LVP, hardwood, tile, and vinyl. New installs, replacements, and repairs done with precision and clean transitions.</p>
+</div>
+
+<div class="service-card reveal">
+  <span class="service-icon">🚪</span>
+  <span class="service-num">07</span>
+  <div class="service-name">Door &amp; Window Work</div>
+  <p class="service-desc">Interior and exterior door installs, weatherstripping, window trim, screen replacements, and hardware upgrades.</p>
+</div>
+
+<div class="service-card reveal">
+  <span class="service-icon">💡</span>
+  <span class="service-num">08</span>
+  <div class="service-name">Light Fixture &amp; Fan Installs</div>
+  <p class="service-desc">Ceiling fans, light fixtures, dimmer switches, and basic electrical swaps. Safe, clean, and done by someone who knows what they're doing.</p>
+</div>
+
+<div class="service-card reveal">
+  <span class="service-icon">🪟</span>
+  <span class="service-num">09</span>
+  <div class="service-name">Blinds &amp; Window Treatments</div>
+  <p class="service-desc">Measurement, supply, and professional installation of blinds, shades, and shutters. Straight, secure, and perfectly fitted.</p>
+</div>
+
+<div class="service-card reveal">
+  <span class="service-icon">🧱</span>
+  <span class="service-num">10</span>
+  <div class="service-name">Drywall Repair &amp; Patching</div>
+  <p class="service-desc">Holes, cracks, water damage, and texture matching. Walls that look like nothing ever happened.</p>
+</div>
+
+<div class="service-card reveal">
+  <span class="service-icon">🔩</span>
+  <span class="service-num">11</span>
+  <div class="service-name">Cabinet &amp; Shelving Installation</div>
+  <p class="service-desc">Kitchen and bath cabinets, floating shelves, closet organizers, and garage storage systems — level, square, and solid.</p>
+</div>
+
+<div class="service-card reveal">
+  <span class="service-icon">🪜</span>
+  <span class="service-num">12</span>
+  <div class="service-name">Deck &amp; Fence Repair</div>
+  <p class="service-desc">Board replacements, staining, structural repairs, and fence panel work. Keep your outdoor spaces safe and looking clean.</p>
+</div>
+
+<div class="service-card reveal">
+  <span class="service-icon">🧹</span>
+  <span class="service-num">13</span>
+  <div class="service-name">Power Washing</div>
+  <p class="service-desc">Driveways, siding, decks, patios, and fences. High-pressure cleaning that makes old surfaces look new again.</p>
+</div>
+
+<div class="service-card reveal">
+  <span class="service-icon">📦</span>
+  <span class="service-num">14</span>
+  <div class="service-name">Assembly &amp; Installation</div>
+  <p class="service-desc">Furniture assembly, TV mounting, appliance hookup, smart home devices, and anything that comes in a box with instructions you don't have time for.</p>
+</div>
+
+<div class="service-card reveal">
+  <span class="service-icon">🌿</span>
+  <span class="service-num">15</span>
+  <div class="service-name">Gutter Cleaning &amp; Repair</div>
+  <p class="service-desc">Clears, flushes, reseals, and rehangings. Keep water moving away from your foundation like it's supposed to.</p>
+</div>
+
+<div class="service-card reveal">
+  <span class="service-icon">🔧</span>
+  <span class="service-num">16</span>
+  <div class="service-name">Caulking &amp; Weatherproofing</div>
+  <p class="service-desc">Bathtub recaulking, window sealing, door gaps, and exterior weatherproofing to keep moisture, drafts, and pests out.</p>
+</div>
+
+<div class="service-card reveal">
+  <span class="service-icon">🏗️</span>
+  <span class="service-num">17</span>
+  <div class="service-name">Trim &amp; Molding</div>
+  <p class="service-desc">Crown molding, baseboards, door casings, chair rail, and wainscoting — clean cuts, tight joints, no gaps.</p>
+</div>
+
+<div class="service-card reveal">
+  <span class="service-icon">🧰</span>
+  <span class="service-num">18</span>
+  <div class="service-name">Handyman Catch-All</div>
+  <p class="service-desc">Got a list? Bring it. We handle multi-item jobs efficiently so you're not waiting on five different contractors for five small things.</p>
+</div>
+```
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- WHY US -->
+
+<section id="why">
+  <div class="why-grid">
+    <div>
+      <div class="section-label">Why Hutch &amp; Co.</div>
+      <h2 class="section-title">STRAIGHT WORK.<br><span class="y">STRAIGHT TALK.</span></h2>
+      <ul class="why-list">
+        <li class="why-item reveal">
+          <div class="why-icon">✓</div>
+          <div class="why-text">
+            <h4>No Subcontractor Shuffle</h4>
+            <p>You deal directly with us — not a dispatcher, not a middleman. The person you call is the person who shows up.</p>
+          </div>
+        </li>
+        <li class="why-item reveal">
+          <div class="why-icon">✓</div>
+          <div class="why-text">
+            <h4>Honest Pricing</h4>
+            <p>You'll know the number before we start. No surprise invoices, no scope creep without your approval.</p>
+          </div>
+        </li>
+        <li class="why-item reveal">
+          <div class="why-icon">✓</div>
+          <div class="why-text">
+            <h4>Quality That Holds</h4>
+            <p>We use professional-grade tools and materials. The work is done right the first time so you're not calling us back to fix our own fix.</p>
+          </div>
+        </li>
+        <li class="why-item reveal">
+          <div class="why-icon">✓</div>
+          <div class="why-text">
+            <h4>Reliable &amp; On Time</h4>
+            <p>We show up when we say we will. If something changes, you hear from us first — not after you've been waiting an hour.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+```
+<div class="why-visual reveal">
+  <div class="why-box">
+    <div class="why-quote">YOUR HOME.<br><span class="y">OUR CRAFT.</span><br>YOUR CALL.</div>
+    <p class="why-detail">
+      Hutch &amp; Co. was built on the idea that homeowners deserve skilled, honest work without the hassle of chasing down contractors. We're local, we're accountable, and we take pride in every job we put our name on.
+    </p>
+    <div class="why-service-area">
+      <h5>📍 Service Area</h5>
+      <p>Kansas City Metro &amp; Surrounding Areas — including Platte County, Clay County, Jackson County, Johnson County (KS), and beyond.</p>
+    </div>
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROCESS -->
+
+<section id="process">
+  <div style="text-align:center; margin-bottom: 1rem;">
+    <div class="section-label" style="justify-content:center;">How It Works</div>
+    <h2 class="section-title">SIMPLE <span class="y">PROCESS.</span><br>REAL RESULTS.</h2>
+  </div>
+
+  <div class="process-steps">
+    <div class="process-step reveal">
+      <div class="step-num">01</div>
+      <div class="step-title">Reach Out</div>
+      <p class="step-desc">Call, text, or fill out the form. Tell us what you need and we'll get back to you fast.</p>
+    </div>
+    <div class="process-step reveal">
+      <div class="step-num">02</div>
+      <div class="step-title">Get a Quote</div>
+      <p class="step-desc">We assess the job and give you a clear, honest price — no pressure, no games.</p>
+    </div>
+    <div class="process-step reveal">
+      <div class="step-num">03</div>
+      <div class="step-title">We Show Up</div>
+      <p class="step-desc">On time, prepared, and ready to work. Your home is treated with care and respect.</p>
+    </div>
+    <div class="process-step reveal">
+      <div class="step-num">04</div>
+      <div class="step-title">Job Done Right</div>
+      <p class="step-desc">We clean up, walk you through the work, and don't leave until you're satisfied.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+
+<section id="contact">
+  <div class="contact-inner">
+    <div class="section-label" style="justify-content:center;">Get In Touch</div>
+    <h2 class="contact-title">READY TO GET<br><span class="y">IT DONE?</span></h2>
+    <p class="contact-sub">Call or text for a fast response. Fill out the form and we'll get back to you within one business day.</p>
+
+```
+<div class="contact-options">
+  <a href="tel:+18168249737" class="contact-option reveal">
+    <div class="contact-option-icon">📞</div>
+    <div class="contact-option-label">Call or Text</div>
+    <div class="contact-option-value">(816) 824-9737</div>
+  </a>
+  <a href="mailto:plattecountyconsulting@gmail.com" class="contact-option reveal">
+    <div class="contact-option-icon">✉️</div>
+    <div class="contact-option-label">Email Us</div>
+    <div class="contact-option-value">plattecountyconsulting<br>@gmail.com</div>
+  </a>
+  <div class="contact-option reveal">
+    <div class="contact-option-icon">🕐</div>
+    <div class="contact-option-label">Hours</div>
+    <div class="contact-option-value">Mon–Sat: 7AM–7PM</div>
+  </div>
+</div>
+
+<div class="contact-form reveal">
+  <div class="form-grid">
+    <div class="form-group">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" placeholder="John Smith"/>
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" placeholder="(816) 000-0000"/>
+    </div>
+    <div class="form-group">
+      <label for="email">Email Address</label>
+      <input type="email" id="email" placeholder="you@email.com"/>
+    </div>
+    <div class="form-group">
+      <label for="service">Service Needed</label>
+      <select id="service">
+        <option value="">Select a service...</option>
+        <option>General Repairs</option>
+        <option>Interior Painting</option>
+        <option>Exterior Painting</option>
+        <option>Bathroom Remodeling</option>
+        <option>Kitchen Updates</option>
+        <option>Flooring Installation</option>
+        <option>Door &amp; Window Work</option>
+        <option>Light Fixture &amp; Fan Installs</option>
+        <option>Blinds &amp; Window Treatments</option>
+        <option>Drywall Repair</option>
+        <option>Cabinet &amp; Shelving</option>
+        <option>Deck &amp; Fence Repair</option>
+        <option>Power Washing</option>
+        <option>Assembly &amp; Installation</option>
+        <option>Gutter Cleaning &amp; Repair</option>
+        <option>Caulking &amp; Weatherproofing</option>
+        <option>Trim &amp; Molding</option>
+        <option>Other / Multiple Services</option>
+      </select>
+    </div>
+    <div class="form-group full">
+      <label for="message">Tell Us About the Job</label>
+      <textarea id="message" placeholder="Describe what you need, the location, and any relevant details..."></textarea>
+    </div>
+  </div>
+  <div class="form-submit">
+    <a href="mailto:plattecountyconsulting@gmail.com" class="btn-primary" id="submitBtn">Send Request →</a>
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+  <div class="footer-logo">HUTCH <span>& CO.</span></div>
+  <div class="footer-legal">
+    © 2025 Platte County Consulting LLC · DBA Hutch &amp; Co.<br>
+    Kansas City Metro &amp; Surrounding Areas
+  </div>
+  <ul class="footer-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="tel:+18168249737">(816) 824-9737</a></li>
+  </ul>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Form submit — build mailto link
+  document.getElementById('submitBtn').addEventListener('click', function(e) {
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const email = document.getElementById('email').value;
+    const service = document.getElementById('service').value;
+    const message = document.getElementById('message').value;
+    if (name || message) {
+      const body = `Name: ${name}\nPhone: ${phone}\nEmail: ${email}\nService: ${service}\n\nMessage:\n${message}`;
+      this.href = `mailto:plattecountyconsulting@gmail.com?subject=Quote Request – Hutch %26 Co.&body=${encodeURIComponent(body)}`;
+    }
+  });
+</script>
