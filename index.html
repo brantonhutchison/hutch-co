@@ -11,7 +11,6 @@
   <style>
     :root {
       --bg: #090909;
-      --bg-soft: #121212;
       --panel: #171717;
       --panel-2: #202020;
       --text: #f5f5f5;
@@ -21,7 +20,6 @@
       --border: rgba(255,255,255,0.10);
       --border-strong: rgba(255,255,255,0.16);
       --shadow: 0 18px 50px rgba(0,0,0,0.34);
-      --radius: 24px;
       --max: 1200px;
       --header-height: 170px;
       --transition: 0.28s ease;
@@ -217,7 +215,7 @@
       z-index: 3;
       padding: 56px 48px;
       background:
-        linear-gradient(90deg, rgba(8,8,8,0.98) 0%, rgba(8,8,8,0.94) 62%, rgba(8,8,8,0.70) 82%, rgba(8,8,8,0.10) 100%);
+        linear-gradient(90deg, rgba(8,8,8,0.98) 0%, rgba(8,8,8,0.94) 58%, rgba(8,8,8,0.74) 78%, rgba(8,8,8,0.16) 100%);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -227,6 +225,7 @@
       position: relative;
       min-height: 700px;
       overflow: hidden;
+      background: #0d0d0d;
     }
 
     .hero-image-wrap::before {
@@ -234,7 +233,7 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(90deg, rgba(8,8,8,0.82) 0%, rgba(8,8,8,0.35) 18%, rgba(8,8,8,0.10) 38%, rgba(8,8,8,0.26) 100%);
+        linear-gradient(90deg, rgba(8,8,8,0.85) 0%, rgba(8,8,8,0.42) 18%, rgba(8,8,8,0.10) 40%, rgba(8,8,8,0.24) 100%);
       z-index: 2;
       pointer-events: none;
     }
@@ -244,8 +243,8 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(circle at 70% 20%, rgba(242,208,92,0.16), transparent 25%),
-        linear-gradient(180deg, rgba(0,0,0,0.10), rgba(0,0,0,0.30));
+        radial-gradient(circle at 72% 20%, rgba(242,208,92,0.14), transparent 24%),
+        linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.28));
       z-index: 2;
       pointer-events: none;
     }
@@ -254,7 +253,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center center;
+      object-position: center 35%;
       filter: saturate(0.95) contrast(1.02);
       transform: scale(1.02);
     }
@@ -779,17 +778,22 @@
       }
 
       .hero-copy {
+        order: 1;
         background: linear-gradient(180deg, rgba(8,8,8,0.96), rgba(8,8,8,0.90));
-        padding: 42px 28px;
+        padding: 42px 28px 28px;
       }
 
       .hero-image-wrap {
-        min-height: 420px;
-        order: -1;
+        order: 2;
+        min-height: 280px;
       }
 
       .hero-image-wrap::before {
-        background: linear-gradient(180deg, rgba(8,8,8,0.16) 0%, rgba(8,8,8,0.16) 100%);
+        background: linear-gradient(180deg, rgba(8,8,8,0.12) 0%, rgba(8,8,8,0.30) 100%);
+      }
+
+      .hero-image {
+        object-position: center 28%;
       }
 
       .services-grid,
@@ -843,6 +847,18 @@
         padding: 60px 0;
       }
 
+      .hero-copy {
+        padding: 34px 22px 24px;
+      }
+
+      .hero-image-wrap {
+        min-height: 220px;
+      }
+
+      .hero-image {
+        object-position: center 24%;
+      }
+
       h1 {
         font-size: 2.5rem;
       }
@@ -868,7 +884,11 @@
       }
 
       .hero-image-wrap {
-        min-height: 340px;
+        min-height: 190px;
+      }
+
+      .hero-image {
+        object-position: center 22%;
       }
     }
   </style>
@@ -918,8 +938,8 @@
             </p>
 
             <div class="hero-actions">
-              <a class="btn btn-primary" href="#contact">Request a Quote</a>
-              <a class="btn btn-secondary" href="mailto:oldman@hutchnco.com">Email Directly</a>
+              <a class="btn btn-primary" href="#services">View Services</a>
+              <a class="btn btn-secondary" href="#contact">Get a Quote</a>
             </div>
 
             <div class="hero-points">
