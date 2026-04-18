@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hutch &amp; Co. | Kansas City Metro Handyman</title>
+  <meta
+    name="description"
+    content="Hutch & Co. provides flooring, blinds, trim work, painting, and custom handyman services across the Kansas City Metro."
+  />
+  <style>
+    :root {
+      --bg: #0d0d0d;
+      --bg-soft: #171717;
+      --panel: #1f1f1f;
+      --panel-2: #252525;
+      --text: #f4f4f4;
+      --muted: #b9b9b9;
+      --yellow: #f2c94c;
+      --yellow-2: #ffd95e;
+      --border: rgba(255,255,255,0.10);
+      --shadow: 0 18px 50px rgba(0,0,0,0.35);
+      --radius: 18px;
+      --radius-sm: 12px;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(242,201,76,0.10), transparent 20%),
+        radial-gradient(circle at top left, rgba(242,201,76,0.08), transparent 18%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(100% - 32px, var(--max));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(12px);
+      background: rgba(13,13,13,0.82);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--yellow), var(--yellow-2));
+      color: #111;
+      font-weight: 900;
+      display: grid;
+      place-items: center;
+      box-shadow: var(--shadow);
+      flex: 0 0 auto;
+    }
+
+    .brand-text {
+      min-width: 0;
+    }
+
+    .brand-title {
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.1;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-subtitle {
+      margin: 3px 0 0;
+      font-size: 0.77rem;
+      color: var(--muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--yellow);
+      transform: translateY(-1px);
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--yellow), var(--yellow-2));
+      color: #111;
+      font-weight: 800;
+      box-shadow: var(--shadow);
+      border: 0;
+      cursor: pointer;
+    }
+
+    .hero {
+      padding: 84px 0 40px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 32px;
+      align-items: stretch;
+    }
+
+    .hero-copy,
+    .hero-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-copy {
+      padding: 42px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(242,201,76,0.12);
+      border: 1px solid rgba(242,201,76,0.25);
+      color: var(--yellow);
+      font-size: 0.84rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0 0 18px;
+      font-size: clamp(2.2rem, 6vw, 4.4rem);
+      line-height: 0.98;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-copy p {
+      margin: 0;
+      max-width: 62ch;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 50px;
+      padding: 0 18px;
+      border-radius: 999px;
+      font-weight: 800;
+      border: 1px solid var(--border);
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--yellow), var(--yellow-2));
+      border-color: transparent;
+      color: #111;
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.03);
+      color: var(--text);
+    }
+
+    .hero-points {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .point {
+      padding: 14px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+    }
+
+    .point strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 0.95rem;
+    }
+
+    .point span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .hero-card {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .hero-card-top {
+      background: linear-gradient(180deg, rgba(242,201,76,0.13), rgba(242,201,76,0.03));
+      border: 1px solid rgba(242,201,76,0.22);
+      border-radius: 22px;
+      padding: 22px;
+    }
+
+    .hero-card-top h2 {
+      margin: 0 0 10px;
+      font-size: 1.2rem;
+    }
+
+    .hero-card-top p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .contact-chip {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 14px 16px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+
+    .contact-chip-label {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .contact-chip-value {
+      font-weight: 800;
+      text-align: right;
+    }
+
+    .section {
+      padding: 34px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 20px;
+    }
+
+    .section-head h2 {
+      margin: 0 0 8px;
+      font-size: clamp(1.7rem, 3vw, 2.5rem);
+      line-height: 1.02;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 65ch;
+    }
+
+    .services-grid,
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .card-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      background: rgba(242,201,76,0.12);
+      border: 1px solid rgba(242,201,76,0.25);
+      display: grid;
+      place-items: center;
+      font-size: 1.2rem;
+      margin-bottom: 16px;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 1.15rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .about-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .about-panel {
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .about-panel h3 {
+      margin: 0 0 12px;
+      font-size: 1.15rem;
+    }
+
+    .about-panel p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .about-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .about-item {
+      padding: 14px 16px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      color: var(--muted);
+    }
+
+    .contact-section {
+      padding-bottom: 88px;
+    }
+
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .contact-info,
+    .form-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-info h3,
+    .form-card h3 {
+      margin: 0 0 12px;
+      font-size: 1.2rem;
+    }
+
+    .contact-info p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .contact-note {
+      margin-top: 18px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(242,201,76,0.08);
+      border: 1px solid rgba(242,201,76,0.18);
+      color: #f2deb0;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #ececec;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      background: var(--panel-2);
+      color: var(--text);
+      border-radius: 14px;
+      padding: 14px 15px;
+      font: inherit;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: rgba(242,201,76,0.6);
+      box-shadow: 0 0 0 4px rgba(242,201,76,0.10);
+    }
+
+    textarea {
+      min-height: 148px;
+      resize: vertical;
+    }
+
+    .form-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .form-help {
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .site-footer {
+      border-top: 1px solid var(--border);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .footer-row {
+      min-height: 92px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding: 18px 0;
+    }
+
+    .footer-copy p {
+      margin: 3px 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .footer-links a:hover {
+      color: var(--yellow);
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .contact-wrap,
+      .about-wrap,
+      .services-grid,
+      .trust-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        align-items: start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .nav {
+        flex-wrap: wrap;
+        padding: 14px 0;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .hero-copy,
+      .hero-card,
+      .contact-info,
+      .form-card,
+      .about-panel,
+      .card {
+        padding: 20px;
+      }
+
+      .hero-points,
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .field.full {
+        grid-column: auto;
+      }
+
+      .btn,
+      .nav-cta {
+        width: 100%;
+      }
+
+      .hero-actions,
+      .form-actions {
+        flex-direction: column;
+      }
+
+      h1 {
+        font-size: 2.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="Hutch and Co home">
+        <div class="brand-mark">H</div>
+        <div class="brand-text">
+          <p class="brand-title">Hutch &amp; Co.</p>
+          <p class="brand-subtitle">Kansas City Metro Handyman</p>
+        </div>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#services">Services</a>
+        <a href="#why-us">Why Us</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <a class="nav-cta" href="#contact">Get a Quote</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">Reliable. Skilled. Local.</div>
+          <h1>Repairs, upgrades, and finish work without the circus.</h1>
+          <p>
+            Hutch &amp; Co. helps homeowners across the Kansas City Metro with flooring,
+            blinds, trim work, painting, finishing, and custom projects. Clean work.
+            Clear communication. No mystery meat contractor energy.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contact">Request a Quote</a>
+            <a class="btn btn-secondary" href="mailto:oldman@hutchnco.com">Email Directly</a>
+          </div>
+
+          <div class="hero-points">
+            <div class="point">
+              <strong>Flooring</strong>
+              <span>LVP, updates, finish detail, and practical installs.</span>
+            </div>
+            <div class="point">
+              <strong>Blinds &amp; Trim</strong>
+              <span>Window treatments, trim work, and clean finishing touches.</span>
+            </div>
+            <div class="point">
+              <strong>Custom Projects</strong>
+              <span>Small renovations and problem-solving work that needs a steady hand.</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <div class="hero-card-top">
+            <h2>Need a quote?</h2>
+            <p>
+              Send over the basics and get the conversation moving. Fast path beats code purgatory.
+            </p>
+          </div>
+
+          <div class="contact-list">
+            <div class="contact-chip">
+              <div>
+                <div class="contact-chip-label">Email</div>
+                <div class="contact-chip-value">oldman@hutchnco.com</div>
+              </div>
+            </div>
+
+            <div class="contact-chip">
+              <div>
+                <div class="contact-chip-label">Facebook</div>
+                <div class="contact-chip-value">Platte County Consulting</div>
+              </div>
+              <a
+                class="btn btn-secondary"
+                href="https://www.facebook.com/profile.php?id=61578850790882"
+                target="_blank"
+                rel="noopener noreferrer"
+              >Open</a>
+            </div>
+
+            <div class="contact-chip">
+              <div>
+                <div class="contact-chip-label">Coverage</div>
+                <div class="contact-chip-value">Kansas City Metro</div>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Services</h2>
+            <p>
+              High-value home service work with a practical, solutions-first approach.
+            </p>
+          </div>
+        </div>
+
+        <div class="services-grid">
+          <article class="card">
+            <div class="card-icon">▦</div>
+            <h3>Flooring</h3>
+            <p>
+              Installation support, updates, transitions, touch-ups, and practical flooring work
+              with attention to clean lines and finish quality.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">▤</div>
+            <h3>Blinds &amp; Window Treatments</h3>
+            <p>
+              Measuring, installation, and clean fitment for blinds and window treatment projects.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">⟂</div>
+            <h3>Trim Work</h3>
+            <p>
+              Detail-oriented trim installs, finishing touches, and carpentry that tightens up a room.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">◫</div>
+            <h3>Painting &amp; Finishing</h3>
+            <p>
+              Surface prep, paint application, and finish work that improves the look without cutting corners.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">⌂</div>
+            <h3>General Handyman Work</h3>
+            <p>
+              Punch lists, repairs, installs, and small improvement projects that need competence more than theatrics.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">✦</div>
+            <h3>Custom Projects</h3>
+            <p>
+              Not everything fits a box. If it’s a home project and it needs brains, hands, and follow-through, ask.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="why-us">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Why Hutch &amp; Co.</h2>
+            <p>
+              The difference is not fake polish. It’s reliability, good judgment, and work that respects the house.
+            </p>
+          </div>
+        </div>
+
+        <div class="trust-grid">
+          <article class="card">
+            <div class="card-icon">✓</div>
+            <h3>Clear Communication</h3>
+            <p>
+              Straight answers, realistic expectations, and less of the contractor disappearing act.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">◇</div>
+            <h3>Detail-Minded Work</h3>
+            <p>
+              Good finish work is where amateurs go to die. Details matter here.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">↺</div>
+            <h3>Practical Problem Solving</h3>
+            <p>
+              Some jobs need craftsmanship. Some need triage. The right call matters more than the loud call.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>About</h2>
+            <p>
+              Built for homeowners who want the work handled without nonsense, delay, or weirdness.
+            </p>
+          </div>
+        </div>
+
+        <div class="about-wrap">
+          <div class="about-panel">
+            <h3>What we do</h3>
+            <p>
+              Hutch &amp; Co. focuses on practical home service work across the Kansas City Metro,
+              including flooring, blinds, trim, painting, finishing, and custom handyman projects.
+            </p>
+
+            <div class="about-list">
+              <div class="about-item">Residential service with a clean, modern, straightforward process.</div>
+              <div class="about-item">Good fit for homeowners who value communication and quality details.</div>
+              <div class="about-item">Ideal for repairs, updates, installs, and smaller renovation-style projects.</div>
+            </div>
+          </div>
+
+          <div class="about-panel">
+            <h3>What matters here</h3>
+            <p>
+              Respect for your time, respect for your home, and work that actually closes the loop.
+            </p>
+
+            <div class="about-list">
+              <div class="about-item">Clean presentation and clean finish work.</div>
+              <div class="about-item">Practical solutions over inflated sales theatrics.</div>
+              <div class="about-item">A business approach built on trust, clarity, and follow-through.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contact">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Contact</h2>
+            <p>
+              Fill this out and it should send directly to your email through FormSubmit.
+            </p>
+          </div>
+        </div>
+
+        <div class="contact-wrap">
+          <div class="contact-info">
+            <h3>Let’s talk about your project</h3>
+            <p>
+              Share the basics and we’ll get the ball rolling. Flooring, blinds, trim, painting,
+              repairs, or something custom — send it over.
+            </p>
+
+            <div class="contact-list" style="margin-top:18px;">
+              <div class="contact-chip">
+                <div>
+                  <div class="contact-chip-label">Email</div>
+                  <div class="contact-chip-value">oldman@hutchnco.com</div>
+                </div>
+              </div>
+
+              <div class="contact-chip">
+                <div>
+                  <div class="contact-chip-label">Facebook Page</div>
+                  <div class="contact-chip-value">Platte County Consulting</div>
+                </div>
+                <a
+                  class="btn btn-secondary"
+                  href="https://www.facebook.com/profile.php?id=61578850790882"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >Open</a>
+              </div>
+            </div>
+
+            <p class="contact-note">
+              Important: the first live form submission may trigger a confirmation email from FormSubmit.
+              Approve that once, then future submissions should route normally.
+            </p>
+          </div>
+
+          <div class="form-card">
+            <h3>Request a Quote</h3>
+
+            <form
+              action="https://formsubmit.co/oldman@hutchnco.com"
+              method="POST"
+            >
+              <input type="hidden" name="_subject" value="New Hutch &amp; Co. Website Lead" />
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_next" value="https://hutchnco.com/?submitted=true#contact" />
+
+              <div class="hidden">
+                <label>
+                  Don’t fill this out:
+                  <input type="text" name="_honey" tabindex="-1" autocomplete="off" />
+                </label>
+              </div>
+
+              <div class="form-grid">
+                <div class="field">
+                  <label for="name">Your Name</label>
+                  <input id="name" name="name" type="text" placeholder="Your Name" required />
+                </div>
+
+                <div class="field">
+                  <label for="phone">Phone Number</label>
+                  <input id="phone" name="phone" type="tel" placeholder="Phone Number" />
+                </div>
+
+                <div class="field full">
+                  <label for="email">Email Address</label>
+                  <input id="email" name="email" type="email" placeholder="you@example.com" required />
+                </div>
+
+                <div class="field full">
+                  <label for="service">Service Needed</label>
+                  <select id="service" name="service">
+                    <option value="">Select a service...</option>
+                    <option>Flooring</option>
+                    <option>Blinds &amp; Window Treatments</option>
+                    <option>Trim Work</option>
+                    <option>Painting &amp; Finishing</option>
+                    <option>General Handyman Work</option>
+                    <option>Custom Project</option>
+                    <option>Multiple / Not Sure</option>
+                  </select>
+                </div>
+
+                <div class="field full">
+                  <label for="message">Tell us about your project</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    placeholder="Describe what you're looking to get done."
+                    required
+                  ></textarea>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button class="btn btn-primary" type="submit">Send Message</button>
+                <a class="btn btn-secondary" href="mailto:oldman@hutchnco.com">Email Instead</a>
+              </div>
+
+              <p class="form-help">
+                If the form acts stupid before activation, use “Email Instead,” then confirm the FormSubmit email once and retry.
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <div class="footer-copy">
+        <p>&copy; 2026 <strong>Hutch &amp; Co.</strong> — Kansas City Metro Handyman</p>
+        <p>Hutch &amp; Co. is a DBA of Platte County Consulting LLC.</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="#services">Services</a>
+        <a href="#why-us">Why Us</a>
+        <a href="#contact">Contact</a>
+        <a
+          href="https://www.facebook.com/profile.php?id=61578850790882"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Facebook</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("submitted") === "true") {
+        const contact = document.getElementById("contact");
+        if (contact) {
+          const note = document.createElement("div");
+          note.style.marginBottom = "18px";
+          note.style.padding = "14px 16px";
+          note.style.borderRadius = "16px";
+          note.style.border = "1px solid rgba(242,201,76,0.22)";
+          note.style.background = "rgba(242,201,76,0.10)";
+          note.style.color = "#f3e2b0";
+          note.textContent = "Form submitted. Check oldman@hutchnco.com for the activation/lead email.";
+          const container = contact.querySelector(".container");
+          if (container) {
+            container.insertBefore(note, container.firstChild);
+          }
+        }
+      }
+    })();
+  </script>
+</body>
+</html>
